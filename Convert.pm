@@ -21,7 +21,7 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.01';
+$VERSION = '1.02';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
