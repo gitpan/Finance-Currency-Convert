@@ -21,7 +21,7 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.02';
+$VERSION = '1.03';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
@@ -118,6 +118,19 @@ sub updateRates() {
 	}
 }
 
+sub updateRate() {
+	my $self = shift;
+	my $source = shift;
+	my $target = shift;
+	# Test if Finance::Quote is available
+	eval { require Finance::Quote; };
+	if ($@) { return; };    # F::Q not installed
+	# get the exchange rates
+	my $q = Finance::Quote->new;
+	$q->user_agent->agent($self->{UserAgent});
+	$self->setRate($source, $target, $q->currency($source, $target));
+}
+
 sub setUserAgent() {
 	my $self = shift;
 	$self->{UserAgent} = shift;
@@ -166,6 +179,7 @@ Convert currencies and fetch their exchange rates (with Finance::Quote)
    $amount_dem = $converter->convertFromEuro(100, "DEM");
 
    $converter->updateRates("EUR", "DEM", "USD");
+   $converter->updateRate("DEM", "USD");
 
    $converter->setRatesFile(".rates");
    $converter->writeRatesFile();
@@ -220,7 +234,8 @@ Other currencies (incomplete):
    my $converter = new Finance::Currency::Convert;
 
 The newly created conversion object will by default only know how to
-convert Euro currencies. To "teach" it more currencies use updateRates.
+convert Euro currencies. To "teach" it more currencies use updateRate
+or updateRates.
 
 =head2 CONVERT
 
@@ -252,12 +267,22 @@ This function is simply shorthand for calling convert directly with
 
 This will fetch the exchange rates for one or more currencies using
 Finance::Quote and update the exchange rates in memory.
-This method will fetach all combinations of exchange rates between
+This method will fetch _all_ combinations of exchange rates between
 the named currencies and the ones already in memory.
 This may result in a large number of requests to Finance::Quote.
 To avoid network overhead you can store the retrieved rates with
 setRatesFile() / writeRatesFile() once you have retrieved them
 and load them again with setRatesFile().
+
+To update a single exchange rate use updateRate.
+
+
+=head2 UPDATERATE
+
+   $converter->updateRate("DEM, "USD");
+
+This will fetch a single exchange rate using Finance::Quote and
+update the exchange rates in memory.
 
 =head2 SETUSERAGENT
 

@@ -14,3 +14,7 @@ Revision history for Perl extension Finance::Currency::Convert.
 1.02  Sun Sep  9 19:58:52 CEST 2001
 	- fixed archive for Windows users
 
+1.03  Mon Oct  8 20:20:18 CEST 2001
+	- new function updateRate() to set a single currency rate
+	  via Finance::Quote
+
