@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#	Copyright (C) 2000-2001, Jan Willamowius <jan@willamowius.de>
+#	Copyright (C) 2000-2004, Jan Willamowius <jan@willamowius.de>
 #	All rights reserved.
 #	This is free software; you can redistribute it and/or
 #	modify it under the same terms as Perl itself.
@@ -21,7 +21,7 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.03';
+$VERSION = '1.04';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
@@ -175,8 +175,8 @@ Convert currencies and fetch their exchange rates (with Finance::Quote)
    my $converter = new Finance::Currency::Convert;
 
    $amount_euro = $converter->convert(100, "DEM", "EUR");
-   $amount_euro = $converter->convertToEuro(100, "DEM");
-   $amount_dem = $converter->convertFromEuro(100, "DEM");
+   $amount_euro = $converter->convertToEUR(100, "DEM");
+   $amount_dem = $converter->convertFromEUR(100, "DEM");
 
    $converter->updateRates("EUR", "DEM", "USD");
    $converter->updateRate("DEM", "USD");
@@ -246,7 +246,7 @@ amount Euro.
 
 =head2 CONVERTTOEURO
 
-   $amount_euro = $converter->convertToEuro(100, "DEM");
+   $amount_euro = $converter->convertToEUR(100, "DEM");
 
 This will convert 100 German Marks into the equivalent amount Euro.
 This function is simply shorthand for calling convert directly with
@@ -254,9 +254,9 @@ This function is simply shorthand for calling convert directly with
 
 =head2 CONVERTFROMEURO
 
-   $amount_dem = $converter->convertFromEuro(100, "DEM");
+   $amount_dem = $converter->convertFromEUR(100, "DEM");
 
-This will convert 100 Eurointo the equivalent amount German Marks.
+This will convert 100 Euro into the equivalent amount German Marks.
 This function is simply shorthand for calling convert directly with
 "EUR" als the first (source) currency.
 
@@ -324,11 +324,6 @@ with updateRates.
 
   Jan Willamowius <jan@willamowius.de>, http://www.willamowius.de
     with help from many nice colleagues at http://www.mobile.de
-
-=head1 RECRUITING
-
-If you are looking for a Perl job, take a look at http://www.mobile.de
-and send me an email with your resume (you must be speaking German!).
 
 =head1 SEE ALSO
 
