@@ -21,7 +21,7 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.01';
+$VERSION = '1.00';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
@@ -299,11 +299,6 @@ with updateRates.
 
   Jan Willamowius <jan@willamowius.de>, http://www.willamowius.de
     with help from many nice colleagues at http://www.mobile.de
-
-=head1 RECRUITING
-
-If you are looking for a Perl job, take a look at http://www.mobile.de
-and send me an email with your resume (you must be speaking German!).
 
 =head1 SEE ALSO
 

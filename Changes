@@ -8,3 +8,6 @@ Revision history for Perl extension Finance::Currency::Convert.
 	  but with higher accuracy
 	- some debug code removed
 
+1.01  Thu Aug 16 15:49:25 CEST 2001
+	- fixed $_ trashing in while(<RATES>) (bkr)
+
