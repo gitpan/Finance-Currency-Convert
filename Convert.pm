@@ -1,6 +1,6 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 #
-#	Copyright (C) 2000, Jan Willamowius <jan@willamowius.de>
+#	Copyright (C) 2000-2001, Jan Willamowius <jan@willamowius.de>
 #	All rights reserved.
 #	This is free software; you can redistribute it and/or
 #	modify it under the same terms as Perl itself.
@@ -21,23 +21,24 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '0.01';
+$VERSION = '1.00';
 
 my %EuroRates = (
-	ATS  => {ATS => 1, BEF => 2.930215, DEM => 0.14207, ESP => 12.08612, EUR => 0.0726727, FIM => 0.431892, FRF => 0.476476, GRD => 24.72058, IEP => 0.0572349, ITL => 140.6481, LUF => 2.929862, NLG => 0.160074, PTE => 14.56289}, 
-	BEF  => {ATS => 0.341109, BEF => 1, DEM => 0.048484, ESP => 4.124601, EUR => 0.024789, FIM => 0.147391, FRF => 0.162608, GRD => 8.432342, IEP => 0.019523, ITL => 47.998878, LUF => 1, NLG => 0.054628, PTE => 4.969819}, 
-	DEM  => {ATS => 7.03553, BEF => 20.625463, DEM => 1, ESP => 85.071808, EUR => 0.511292, FIM => 3.040004, FRF => 3.353855, GRD => 173.9191, IEP => 0.402675, ITL => 989.999146, LUF => 20.625463, NLG => 1.126739, PTE => 102.504822}, 
-	ESP  => {ATS => 0.082701, BEF => 0.242448, DEM => 0.011755, ESP => 1, EUR => 0.00601, FIM => 0.035735, FRF => 0.039424, GRD => 2.044426, IEP => 0.004733, ITL => 11.637217, LUF => 0.242448, NLG => 0.013245, PTE => 1.204921}, 
-	EUR  => {ATS => 13.7603, BEF => 40.339901, DEM => 1.95583, ESP => 166.386002, EUR => 1, FIM => 5.94573, FRF => 6.55957, GRD => 340.3229, IEP => 0.787564, ITL => 1936.27002, LUF => 40.339901, NLG => 2.20371, PTE => 200.481995}, 
-	FIM  => {ATS => 2.314316, BEF => 6.784684, DEM => 0.328947, ESP => 27.984116, EUR => 0.168188, FIM => 1, FRF => 1.10324, GRD => 57.21161, IEP => 0.132459, ITL => 325.657227, LUF => 6.784684, NLG => 0.370637, PTE => 33.718651}, 
-	FRF  => {ATS => 2.097744, BEF => 6.149778, DEM => 0.298164, ESP => 25.365381, EUR => 0.152449, FIM => 0.906421, FRF => 1, GRD => 51.85781, IEP => 0.120063, ITL => 295.182465, LUF => 6.149778, NLG => 0.335953, PTE => 30.563284}, 
-	GRD  => {ATS => 0.0404049, BEF => 0.118444, DEM => 0.00574301, ESP => 0.488571, EUR => 0.00293756, FIM => 0.0174586, FRF => 0.019261, GRD => 1, IEP => 0.0023137, ITL => 5.68554, LUF => 0.118436, NLG => 0.00647076, PTE => 0.588681}, 
-	IEP  => {ATS => 17.471977, BEF => 51.221107, DEM => 2.483392, ESP => 211.266647, EUR => 1.269738, FIM => 7.54952, FRF => 8.328936, GRD => 431.9145, IEP => 1, ITL => 2458.555664, LUF => 51.221107, NLG => 2.798135, PTE => 254.559631}, 
-	ITL  => {ATS => 0.007107, BEF => 0.020834, DEM => 0.00101, ESP => 0.085931, EUR => 0.000516, FIM => 0.003071, FRF => 0.003388, GRD => 0.17568, IEP => 0.000407, ITL => 1, LUF => 0.020834, NLG => 0.001138, PTE => 0.10354}, 
-	LUF  => {ATS => 0.341109, BEF => 1, DEM => 0.048484, ESP => 4.124601, EUR => 0.024789, FIM => 0.147391, FRF => 0.162608, GRD => 8.425906, IEP => 0.019523, ITL => 47.998878, LUF => 1, NLG => 0.054628, PTE => 4.969819}, 
-	NLG  => {ATS => 6.244152, BEF => 18.305449, DEM => 0.887517, ESP => 75.502678, EUR => 0.45378, FIM => 2.698055, FRF => 2.976603, GRD => 154.361, IEP => 0.357381, ITL => 878.640991, LUF => 18.305449, NLG => 1, PTE => 90.974762}, 
-	PTE  => {ATS => 0.068636, BEF => 0.201215, DEM => 0.009756, ESP => 0.82993, EUR => 0.004988, FIM => 0.029657, FRF => 0.032719, GRD => 1.696712, IEP => 0.003928, ITL => 9.658074, LUF => 0.201215, NLG => 0.010992, PTE  => 1}
-				);
+         BEF => {EUR=>0.0247899055505,   BEF => 1},
+         DEM => {EUR=>0.511291881196,	 DEM => 1},
+         ESP => {EUR=>0.00601012104384,  ESP => 1},
+         EUR => {ATS=>13.7603, BEF=>40.3399, DEM=>1.95583, EUR=>1, ESP=>166.386, FIM=>5.94573, FRF=>6.55957, GRD=>340.750, IEP=>.787564, ITL=>1936.27, LUF=>40.3399, NLG=>2.20371, PTE=>200.482}, 
+         FRF => {EUR=>0.152449017237, 	 FRF => 1},
+         GRD => {EUR=>0.00293470286134,  GRD => 1},
+         IEP => {EUR=>1.26973807843, 	 IEP => 1},
+         ITL => {EUR=>0.000516456899089, ITL => 1},    
+         LUF => {EUR=>0.0247899055505,   LUF => 1},
+         NLG => {EUR=>0.45378021609, 	 NLG => 1},
+         ATS => {EUR=>0.0726728341679,   ATS => 1},
+         PTE => {EUR=>0.00498797897068,  PTE => 1},
+         FIM => {EUR=>0.168187926462,	 FIM => 1}
+		                  );
+
 sub new() {
 	my $proto = shift;
 	my $class = ref($proto) || $proto;
@@ -107,14 +108,12 @@ sub updateRates() {
 	$q->user_agent->agent($self->{UserAgent});
 	foreach my $source (@CurrencyList) {
 		foreach my $target (sort keys %{ $self->{CurrencyRates}}) {
-print "update $source -> $target\n";
-#			$self->setRate($source, $target, $q->currency($source, $target));
+			$self->setRate($source, $target, $q->currency($source, $target));
 		}
 	}
 	foreach my $source (sort keys %{ $self->{CurrencyRates}}) {
 		foreach my $target (@CurrencyList) {
-print "update $source -> $target\n";
-#			$self->setRate($source, $target, $q->currency($source, $target));
+			$self->setRate($source, $target, $q->currency($source, $target));
 		}
 	}
 }
@@ -209,6 +208,9 @@ Currencies with built-in rates (complete):
 Other currencies (incomplete):
 
 	AUD		Australian Dollar
+	CHF		Swiss Franc
+	HKD		Hong Kong Dollar
+	JPY		Japanese Yen
 	USD		US Dollar
 
 =head1 AVAILABLE METHODS
@@ -296,6 +298,7 @@ with updateRates.
 =head1 AUTHOR
 
   Jan Willamowius <jan@willamowius.de>, http://www.willamowius.de
+    with help from many nice colleagues at http://www.mobile.de
 
 =head1 SEE ALSO
 
