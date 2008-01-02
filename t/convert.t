@@ -1,30 +1,34 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 use strict;
-use Test;
-BEGIN {plan tests => 5};
+use warnings;
+use Test::More tests => 6;
 
 use Finance::Currency::Convert;
 
 # test object creation
 my $converter = new Finance::Currency::Convert;
-ok($converter);
+ok($converter, 'object creation');
 
 # test conversion to self
 my $amount0 = $converter->convert(456, "EUR", "EUR");
-ok($amount0, 456);
+is($amount0, 456, 'convert EUR to self');
 
 # test build in exchange rate
 my $amount1 = $converter->convert(1, "EUR", "DEM");
-ok($amount1, 1.95583);
+is($amount1, 1.95583, 'test build in exchange rate');
 
 # test convertFromEUR
 my $amount2 = $converter->convert(1, "EUR", "DEM");
 my $amount3 = $converter->convertFromEUR(1, "DEM");
-ok($amount2, $amount3);
+is($amount2, $amount3, 'convertFromEUR');
 
 # test convertToEUR
 my $amount4 = $converter->convert(1, "DEM", "EUR");
 my $amount5 = $converter->convertToEUR(1, "DEM");
-ok($amount4, $amount5);
+is($amount4, $amount5, 'convertToEUR');
 
+# test conversion to self
+my $amount6 = $converter->convertToEUR(456.22, "MTL");
+my $amount7 = $converter->convertFromEUR($amount6, "MTL");
+is($amount7, 456.22, 'convert MTL to self');
 

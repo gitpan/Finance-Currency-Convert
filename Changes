@@ -21,3 +21,7 @@ Revision history for Perl extension Finance::Currency::Convert.
 1.04  Wed Mar 18 00:30:00 CEST 2004
 	- fix small errors in the Perldoc
 
+1.05  Wed Jan 2 14:30:00 CEST 2008
+	- add fixed Euro conversion rates for CYP, MTL and SIT
+	- improved test cases
+

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#	Copyright (C) 2000-2004, Jan Willamowius <jan@willamowius.de>
+#	Copyright (C) 2000-2007, Jan Willamowius <jan@willamowius.de>
 #	All rights reserved.
 #	This is free software; you can redistribute it and/or
 #	modify it under the same terms as Perl itself.
@@ -21,13 +21,13 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.04';
+$VERSION = '1.05';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
          DEM => {EUR=>0.511291881196,	 DEM => 1},
          ESP => {EUR=>0.00601012104384,  ESP => 1},
-         EUR => {ATS=>13.7603, BEF=>40.3399, DEM=>1.95583, EUR=>1, ESP=>166.386, FIM=>5.94573, FRF=>6.55957, GRD=>340.750, IEP=>.787564, ITL=>1936.27, LUF=>40.3399, NLG=>2.20371, PTE=>200.482}, 
+         EUR => {ATS=>13.7603, BEF=>40.3399, DEM=>1.95583, EUR=>1, ESP=>166.386, FIM=>5.94573, FRF=>6.55957, GRD=>340.750, IEP=>.787564, ITL=>1936.27, LUF=>40.3399, NLG=>2.20371, PTE=>200.482, CYP=>0.585274, MTL=>0.429300, SIT=>239.640}, 
          FRF => {EUR=>0.152449017237, 	 FRF => 1},
          GRD => {EUR=>0.00293470286134,  GRD => 1},
          IEP => {EUR=>1.26973807843, 	 IEP => 1},
@@ -36,7 +36,10 @@ my %EuroRates = (
          NLG => {EUR=>0.45378021609, 	 NLG => 1},
          ATS => {EUR=>0.0726728341679,   ATS => 1},
          PTE => {EUR=>0.00498797897068,  PTE => 1},
-         FIM => {EUR=>0.168187926462,	 FIM => 1}
+         FIM => {EUR=>0.168187926462,	 FIM => 1},
+         CYP => {EUR=>1.70860144137618,  CYP => 1},
+         MTL => {EUR=>2.32937339855579,  MTL => 1},
+         SIT => {EUR=>0.00417292605575029, SIT => 1},
 		                  );
 
 sub new() {
@@ -218,6 +221,9 @@ Currencies with built-in rates (complete):
 	LUF		Luxembourg Franc
 	NLG		Dutch Guilder
 	PTE		Portuguese Escudo
+	CYP		Cyprus Pound
+	MTL		Maltese Lira
+	SIT		Slovenian Tolars
 
 Other currencies (incomplete):
 
@@ -322,7 +328,7 @@ with updateRates.
 
 =head1 AUTHOR
 
-  Jan Willamowius <jan@willamowius.de>, http://www.willamowius.de
+  Jan Willamowius <jan@willamowius.de>, http://www.willamowius.de/perl.html
     with help from many nice colleagues at http://www.mobile.de
 
 =head1 SEE ALSO
