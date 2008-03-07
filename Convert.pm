@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#	Copyright (C) 2000-2007, Jan Willamowius <jan@willamowius.de>
+#	Copyright (C) 2000-2008, Jan Willamowius <jan@willamowius.de>
 #	All rights reserved.
 #	This is free software; you can redistribute it and/or
 #	modify it under the same terms as Perl itself.
@@ -21,7 +21,7 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.05';
+$VERSION = '1.06';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
@@ -329,7 +329,6 @@ with updateRates.
 =head1 AUTHOR
 
   Jan Willamowius <jan@willamowius.de>, http://www.willamowius.de/perl.html
-    with help from many nice colleagues at http://www.mobile.de
 
 =head1 SEE ALSO
 

@@ -28,7 +28,8 @@ my $amount5 = $converter->convertToEUR(1, "DEM");
 is($amount4, $amount5, 'convertToEUR');
 
 # test conversion to self
+my $e = 0.0000001; # error tolerance for float comparison
 my $amount6 = $converter->convertToEUR(456.22, "MTL");
 my $amount7 = $converter->convertFromEUR($amount6, "MTL");
-is($amount7, 456.22, 'convert MTL to self');
+ok(abs($amount7 - 456.22) <= $e, 'convert MTL to self');
 
