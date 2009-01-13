@@ -21,13 +21,13 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.06';
+$VERSION = '1.07';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
          DEM => {EUR=>0.511291881196,	 DEM => 1},
          ESP => {EUR=>0.00601012104384,  ESP => 1},
-         EUR => {ATS=>13.7603, BEF=>40.3399, DEM=>1.95583, EUR=>1, ESP=>166.386, FIM=>5.94573, FRF=>6.55957, GRD=>340.750, IEP=>.787564, ITL=>1936.27, LUF=>40.3399, NLG=>2.20371, PTE=>200.482, CYP=>0.585274, MTL=>0.429300, SIT=>239.640}, 
+         EUR => {ATS=>13.7603, BEF=>40.3399, DEM=>1.95583, EUR=>1, ESP=>166.386, FIM=>5.94573, FRF=>6.55957, GRD=>340.750, IEP=>.787564, ITL=>1936.27, LUF=>40.3399, NLG=>2.20371, PTE=>200.482, CYP=>0.585274, MTL=>0.429300, SIT=>239.640, SKK=>30.1260}, 
          FRF => {EUR=>0.152449017237, 	 FRF => 1},
          GRD => {EUR=>0.00293470286134,  GRD => 1},
          IEP => {EUR=>1.26973807843, 	 IEP => 1},
@@ -40,6 +40,7 @@ my %EuroRates = (
          CYP => {EUR=>1.70860144137618,  CYP => 1},
          MTL => {EUR=>2.32937339855579,  MTL => 1},
          SIT => {EUR=>0.00417292605575029, SIT => 1},
+         SKK => {EUR=>0.0331939188740623,  SKK => 1},
 		                  );
 
 sub new() {
@@ -103,9 +104,12 @@ sub writeRatesFile() {
 sub updateRates() {
 	my $self = shift;
 	my @CurrencyList = @_;
-	# Test if Finance::Quote is available
+	# test if Finance::Quote is available
 	eval { require Finance::Quote; };
-	if ($@) { return; };	# F::Q not installed
+	if ($@) {
+		warn "Finance::Quote not installed - can't use updateRates()\n";
+		return;
+	};
 	# get the exchange rates
 	my $q = Finance::Quote->new;
 	$q->user_agent->agent($self->{UserAgent});

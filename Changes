@@ -28,3 +28,7 @@ Revision history for Perl extension Finance::Currency::Convert.
 1.06  Fri Mar 7 14:00:00 CEST 2008
 	- fix test case with floating point comparison
 
+1.07  Mon Jan 13 16:00:00 CEST 2009
+	- add fixed Euro conversion rates for SKK
+	- warn if updateRates() is used, but Finance::Quote is not installed
+

@@ -2,4 +2,5 @@ Changes
 Convert.pm
 Makefile.PL
 MANIFEST
+META.yml
 t/convert.t
