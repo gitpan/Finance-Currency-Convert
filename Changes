@@ -32,3 +32,6 @@ Revision history for Perl extension Finance::Currency::Convert.
 	- add fixed Euro conversion rates for SKK
 	- warn if updateRates() is used, but Finance::Quote is not installed
 
+1.08  Sat Jan 1 10:00:00 CEST 2011
+	- add fixed Euro conversion rates for EEK
+

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#	Copyright (C) 2000-2008, Jan Willamowius <jan@willamowius.de>
+#	Copyright (C) 2000-2010, Jan Willamowius <jan@willamowius.de>, http://www.willamowius.de/
 #	All rights reserved.
 #	This is free software; you can redistribute it and/or
 #	modify it under the same terms as Perl itself.
@@ -21,13 +21,13 @@ require AutoLoader;
 @EXPORT = qw(
 	
 );
-$VERSION = '1.07';
+$VERSION = '1.08';
 
 my %EuroRates = (
          BEF => {EUR=>0.0247899055505,   BEF => 1},
          DEM => {EUR=>0.511291881196,	 DEM => 1},
          ESP => {EUR=>0.00601012104384,  ESP => 1},
-         EUR => {ATS=>13.7603, BEF=>40.3399, DEM=>1.95583, EUR=>1, ESP=>166.386, FIM=>5.94573, FRF=>6.55957, GRD=>340.750, IEP=>.787564, ITL=>1936.27, LUF=>40.3399, NLG=>2.20371, PTE=>200.482, CYP=>0.585274, MTL=>0.429300, SIT=>239.640, SKK=>30.1260}, 
+         EUR => {ATS=>13.7603, BEF=>40.3399, DEM=>1.95583, EUR=>1, ESP=>166.386, FIM=>5.94573, FRF=>6.55957, GRD=>340.750, IEP=>.787564, ITL=>1936.27, LUF=>40.3399, NLG=>2.20371, PTE=>200.482, CYP=>0.585274, MTL=>0.429300, SIT=>239.640, SKK=>30.1260, EEK=>15.6466}, 
          FRF => {EUR=>0.152449017237, 	 FRF => 1},
          GRD => {EUR=>0.00293470286134,  GRD => 1},
          IEP => {EUR=>1.26973807843, 	 IEP => 1},
@@ -41,6 +41,7 @@ my %EuroRates = (
          MTL => {EUR=>2.32937339855579,  MTL => 1},
          SIT => {EUR=>0.00417292605575029, SIT => 1},
          SKK => {EUR=>0.0331939188740623,  SKK => 1},
+         EEK => {EUR=>0.0639116485371,  EEK => 1},
 		                  );
 
 sub new() {

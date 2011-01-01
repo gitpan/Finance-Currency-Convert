@@ -1,5 +1,5 @@
 name:               Finance::Currency::Convert
-version:            1.07
+version:            1.08
 abstract:           Convert currencies
 author:
     - Jan Willamowius <jan@willamowius.de>

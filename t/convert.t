@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 8;
 
 use Finance::Currency::Convert;
 
@@ -37,4 +37,8 @@ ok(abs($amount7 - 456.22) <= $e, 'convert MTL to self');
 my $amount8 = $converter->convertToEUR(789.74, "SKK");
 my $amount9 = $converter->convertFromEUR($amount8, "SKK");
 ok(abs($amount9 - 789.74) <= $e, 'convert SKK to self');
+
+my $amount10 = $converter->convertToEUR(789.74, "EEK");
+my $amount11 = $converter->convertFromEUR($amount10, "EEK");
+ok(abs($amount11 - 789.74) <= $e, 'convert EEK to self');
 
